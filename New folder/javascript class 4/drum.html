@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>  virtual drum</title>
+     <link rel="stylesheet" type="text/css" href="main2.css">
+     <style>    
+        body{
+            background-size: cover;
+            background-image:url("virtual.jpg");
+           
+            }
+   </style>
+</head>
+
+                <body>
+                     <div class="keys">
+                             <div   data-key=  "65"   class="key">
+                             <kbd>A </kbd>
+                             <span class="sound"></span>
+                               </div>
+
+
+                             <div   data-key=  "83"   class="key">
+                             <kbd>S</kbd>
+                             <span class="sound"></span>
+                               </div>
+
+                              <div   data-key=  "68"   class="key">
+                             <kbd>D</kbd>
+                             <span class="sound"></span>
+                               </div>
+
+
+                             <div   data-key=  "70"   class="key">
+                             <kbd>F</kbd>
+                             <span class="sound"></span>
+                             </div>
+
+
+                             <div   data-key=  "71"   class="key">
+                             <kbd>G</kbd>
+                             <span class="sound"> </span>
+                              </div>
+                             
+
+                            <div   data-key=  "72"   class="key">
+                             <kbd>H</kbd>
+                             <span class="sound"></span>
+                             </div>
+
+                            <div   data-key=  "74"   class="key">
+                             <kbd>J</kbd>
+                             <span class="sound"></span>
+                                 </div>
+
+                            <div data-key="75" class="key">
+                             <kbd>K</kbd>
+                             <span class="sound"></span>
+                            </div>
+                    </div> 
+         
+         
+    
+    
+    <!-------------------------------------Audio files------------------------>
+    
+    
+    <audio data-key="65"  src="sounds/clap.wav"></audio>
+    <audio data-key="83"  src="sounds/hihat.wav"></audio>
+    <audio data-key="68"  src="sounds/kick.wav"></audio>
+    <audio data-key="70"  src="sounds/openhat.wav"></audio>
+    <audio data-key="71"  src="sounds/boom.wav"></audio>
+    <audio data-key="72"  src="sounds/snare.wav"></audio>
+    <audio data-key="74"  src="sounds/tom.wav"></audio>
+    <audio data-key="75"  src="sounds/tink.wav"></audio>
+    
+    
+    
+      <!--   -------------------------------------------script--------------------------->
+    
+ <script src="jquery.js">   </script>
+   <script>
+           function playSound(e) {
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+            if (!audio) return;
+            audio.currentTime = 0;
+            audio.play();
+             key.classList.add('playing');
+          }
+           function removeTransition(e) {
+            if (e.propertyName !== 'transform') return;
+           this.classList.remove('playing');
+          }
+          const keys = Array.from(document.querySelectorAll('.key'));
+          keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+          window.addEventListener('keydown', playSound);
+
+
+
+
+</script> 
+<script>
+        function Start (audioFile)
+        {
+            var audio = document.getElementById("key");
+            audio.src = audioFile;
+            audio.play();
+        }
+        <audio data key="65" alt="Play Button width="37" height="30" onclick="Start('clap.wav')">
+
+        < img src="images/play.png" alt="Play Button width="37" height="30" onclick="Start('EL.mp3')">
+</script>
+
+
+    
+    
+    
+    
+    
+    
+    <!-------------------buttons------------>
+<!--
+    <div class="button">
+        <button> A </button>
+        <button> S </button>
+        <button> D </button>
+        <button> F </button>
+        <button> G </button>
+        <button> H</button>
+        <button> K</button>
+        <button> L</button>
+     </div>
+-->
+        
+    </body>
+</html>
+    
+    
+    
+  
